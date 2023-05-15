@@ -4,7 +4,11 @@
 
   function addTodo() {
     console.log(todoText)
-    todoItems.push(todoText);
+    const todo = {
+      text: todoText,
+      date: new Date().toLocaleString("en-IE"),
+    };
+    todoItems.push(todo);
     todoItems = [...todoItems];
     todoText = "";
   };
@@ -36,11 +40,13 @@
     <table class="table is-fullwidth">
       <thead>
         <th>Task</th>
+        <th>Date</th>
       </thead>
       <tbody>
       {#each todoItems as todo}
         <tr>
-          <td> {todo} </td>
+          <td> {todo.text} </td>
+          <td> {todo.date} </td>
         </tr>
       {/each}
       </tbody>
