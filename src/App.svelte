@@ -5,6 +5,7 @@
 
   import { v4 as uuidv4 } from 'uuid';
   import Title from "./Title.svelte";
+  import Todolist from './Todolist.svelte';
  
   function addTodo() {
     console.log(todoText)
@@ -28,9 +29,8 @@
   };
 </script>
 
-  <div class="container">
-    <Title title="Simple Todo List" subtitle="Fun things to do"/>
-  </div>
+<div class="container">
+  <Title title="Simple Todo List" subTitle="Fun Things to do"/>
   <div class="section box">
     <div class="field is-horizontal">
       <div class="field-label is-normal">
@@ -42,44 +42,11 @@
             <input bind:value={todoText} id="todo" class="input" type="text" placeholder="Type something...">
           </p>
         </div>
-        <button on:click={addTodo} class="button">Add To Do</button>
+        <button on:click={addTodo} class="button">Add Todo</button>
       </div>
     </div>
   </div>
-    <div class="section box">
-    <div class="title is-6">Tasks to do</div>
-    <table class="table is-fullwidth">
-      <thead>
-        <th>Task</th>
-        <th>Date</th>
-        <th></th>
-      </thead>
-      <tbody>
-      {#each todoItems as todo}
-        <tr>
-          <td> {todo.text} </td>
-          <td> {todo.date} </td>
-          <button on:click={deleteTodo(todo.id)} class="button">delete</button>
-        </tr>
-      {/each}
-      </tbody>
-    </table>
-  </div>
-  <div class="section box">
-    <div class="title is-6">Tasks done</div>
-    <table id="done-table" class="table is-fullwidth">
-      <thead>
-        <th>Task</th>
-        <th>Date</th>
-        <th></th>
-      </thead>
-      <tbody>
-        {#each doneItems as todo}
-          <tr>
-            <td> {todo.text} </td>
-            <td> {todo.date} </td>
-          </tr>
-        {/each}
-      </tbody>
-    </table>
-  </div>
+  <Todolist caption="Tasks to do" items="{todoItems}"/>
+  <Todolist caption="Tasks done" items="{doneItems}"/>
+</div>
+
