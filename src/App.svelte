@@ -46,7 +46,7 @@
       </div>
     </div>
   </div>
-  <Todolist caption="Tasks to do" items="{todoItems}"/>
+  <Todolist caption="Tasks to do" items="{todoItems}" deleteHandler="{deleteTodo}"/>
   <Todolist caption="Tasks done" items="{doneItems}"/>
 </div>
 

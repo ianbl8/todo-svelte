@@ -1,6 +1,7 @@
 <script>
   export let caption;
   export let items = [];
+  export let deleteHandler = null;
 </script>
 
 <div class="section box">
@@ -14,8 +15,11 @@
     <tbody>
       {#each items as todo}
         <tr>
-          <td> {todo.text} </td>
-          <td> {todo.date}</td>
+          <td>{todo.text}</td>
+          <td>{todo.date}</td>
+          {#if deleteHandler}
+            <button on:click={deleteHandler(todo.id)} class="button">Delete</button>
+          {/if}
         </tr>
       {/each}
     </tbody>
